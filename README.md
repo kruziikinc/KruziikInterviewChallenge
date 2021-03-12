@@ -32,3 +32,5 @@ For submitting your application, create a new branch with your name on it in git
 You can continuously push your in-progress code to your branch. The submission
 will be accepted only once you have pushed the code with the following message in
 your last commit : "Final commit - <your name> - challenge submission".
+
+#### Note: Any push or changes in the 'main' branch or 'test backup' branch will be considered as disqualification.  
