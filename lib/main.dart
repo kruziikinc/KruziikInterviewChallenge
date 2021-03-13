@@ -15,6 +15,7 @@ class _CalcState extends State<Calc> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'A simple calculator app',
+      debugShowCheckedModeBanner: false,
       // routes: <Create router here>,
       home: Home(),
     );
