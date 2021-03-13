@@ -1,3 +1,4 @@
+import 'package:calc_challenge/screens/history.dart';
 import 'package:flutter/material.dart';
 
 class CustomNav extends StatelessWidget with PreferredSizeWidget {
@@ -14,9 +15,15 @@ class CustomNav extends StatelessWidget with PreferredSizeWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 25.0),
-            child: Icon(
-              Icons.history,
-              size: 30,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => history()));
+              },
+              child: Icon(
+                Icons.history,
+                size: 30,
+              ),
             ),
           )
         ],

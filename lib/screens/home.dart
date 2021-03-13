@@ -1,5 +1,6 @@
 import 'package:calc_challenge/nav/appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -7,6 +8,49 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String equation = "0";
+  String result = "0";
+  String expression = "";
+  double equFontsize = 38.0;
+  double resultFontsize = 48.0;
+
+  buttonPressed(String buttonText) {
+    setState(() {
+      if (buttonText == "AC") {
+        equation = "0";
+        result = "0";
+        equFontsize = 38.0;
+        resultFontsize = 48.0;
+      } else if (buttonText == "=") {
+        equFontsize = 38.0;
+        resultFontsize = 48.0;
+
+        expression = equation;
+        expression = expression.replaceAll('*', '*');
+        expression = expression.replaceAll('/', '/');
+        expression = expression.replaceAll('%', '/100');
+
+        try {
+          Parser p = Parser();
+          Expression exp = p.parse(expression);
+
+          ContextModel cm = ContextModel();
+          result = '${exp.evaluate(EvaluationType.REAL, cm)}';
+        } catch (e) {
+          result = "Error";
+        }
+      } else {
+        equFontsize = 48.0;
+        resultFontsize = 38.0;
+        if (equation == "0") {
+          equation = buttonText;
+        } else {
+          equation = equation + buttonText;
+        }
+      }
+    });
+  }
+
   Widget buildButton(
       String buttonText, double buttonHeight, Color buttonColor) {
     return Container(
@@ -21,8 +65,8 @@ class _HomeState extends State<Home> {
               width: 1,
             )),
         padding: EdgeInsets.all(16.0),
-        onPressed: () {},
-        // onPressed: () => buttonPressed(buttonText),
+        // onPressed: () {},
+        onPressed: () => buttonPressed(buttonText),
         child: Text(
           buttonText,
           style: TextStyle(
@@ -45,18 +89,16 @@ class _HomeState extends State<Home> {
             alignment: Alignment.centerRight,
             padding: EdgeInsets.fromLTRB(10, 20, 20, 20),
             child: Text(
-              "equation",
-              style: TextStyle(fontSize: 48.0),
-              // style: TextStyle(fontSize: equationFontSize),
+              equation,
+              style: TextStyle(fontSize: equFontsize),
             ),
           ),
           Container(
             alignment: Alignment.centerRight,
             padding: EdgeInsets.fromLTRB(10, 20, 20, 20),
             child: Text(
-              "result",
-              style: TextStyle(fontSize: 38.0),
-              // style: TextStyle(fontSize: resultFontSize),
+              result,
+              style: TextStyle(fontSize: resultFontsize),
             ),
           ),
           Expanded(
