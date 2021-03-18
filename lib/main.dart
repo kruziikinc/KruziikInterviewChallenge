@@ -16,7 +16,6 @@ class _CalcState extends State<Calc> {
     return MaterialApp(
       title: 'A simple calculator app',
       // routes: <Create router here>,
-      debugShowCheckedModeBanner: false,
       home: Home(),
     );
   }
