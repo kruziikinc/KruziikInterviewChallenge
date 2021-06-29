@@ -12,7 +12,7 @@ For this challenge you are required to create a simple calculator with the follo
 3. Multiplication
 4. Division
 5. Percentage Function (To be able to calculate percentage of or multiply, add, subtract, or divide a number with a certain percentage of the same number.)
-6. Bracket Functions (BODMAS)
+6. Bracket Functions and BODMAS
 7. History retention (The calculator should be able to retain history of the last 10 calculations made and the user should be able to view history by clicking on a button present in the app bar. The user should also be able to recall the result of any past calculations as an input in the current calculation.)
 
 You can have the user interface and the color theme as per your liking.
